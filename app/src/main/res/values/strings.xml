@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">FinalGroupProject</string>
+    <string name="title">CST2335 - Final Group Project</string>
+    <string name="app_name">Final Group Project</string>
+
+    <string name="student_01_name">Student 01</string>
+    <string name="student_02_name">Student 02</string>
+    <string name="student_03_name">Student 03</string>
+    <string name="student_04_name">Student 04</string>
+
+
+
+
 </resources>
