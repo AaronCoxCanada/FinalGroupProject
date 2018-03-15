@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Multiple Choice Creator Activities - Prefix: Mcc -->
+        <activity android:name=".MccMainActivity"></activity>
+        <!-- End Multiple Choice Creator Strings -->
+
     </application>
 
 </manifest>
