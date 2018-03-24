@@ -18,9 +18,10 @@
         </activity>
 
         <!-- Multiple Choice Creator Activities - Prefix: Mcc -->
-        <activity android:name=".MccMainActivity"></activity>
+        <activity android:name=".MccMainActivity" />
         <!-- End Multiple Choice Creator Strings -->
 
+        <activity android:name=".MccQuestionActivity"></activity>
     </application>
 
 </manifest>
