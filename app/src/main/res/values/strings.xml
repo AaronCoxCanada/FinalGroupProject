@@ -5,11 +5,12 @@
     <string name="student_01_name">Multiple Choice Creator</string>
     <string name="student_02_name">Student 02</string>
     <string name="student_03_name">Student 03</string>
-    <string name="student_04_name">Student 04</string>
+    <string name="student_04_name">OCTranspo App</string>
 
     <!-- Multiple Choice Creator Strings - Prefix: mcc -->
     <string name="mcc_main_label">Multiple Choice Quiz Creator</string>
     <!-- End Multiple Choice Creator Strings -->
+
     <string name="ocb_search_button">Search</string>
     <string name="ocb_search_hint">Bus Stop Number</string>
     <string name="ocb_search_history_text">Search History</string>
