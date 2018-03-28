@@ -30,8 +30,8 @@ public class StartActivity extends Activity {
 
     private void assignListeners() {
         studentButton1.setOnClickListener((View e) ->{
-            //Intent intent = new Intent(this, _);
-            //startActivity(intent);
+            Intent intent = new Intent(this, MccMainActivity.class);
+            startActivity(intent);
         });
 
         studentButton2.setOnClickListener((View e) ->{
