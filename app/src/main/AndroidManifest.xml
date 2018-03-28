@@ -17,9 +17,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Multiple Choice Creator Activities - Prefix: Mcc -->
+        <activity android:name=".MccMainActivity" />
+        <!-- End Multiple Choice Creator Strings -->
+
+        <activity android:name=".MccQuestionActivity"/>
+
         <activity
             android:name=".octranspo.AC_OCTranspActivity"
             android:theme="@style/Theme.AppCompat" />
+
+
     </application>
 
 </manifest>
