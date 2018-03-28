@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.algonquinlive.cst335.finalgroupproject.octranspo.AC_OCTranspActivity;
+
 public class StartActivity extends Activity {
 
     private Button studentButton1;
@@ -28,8 +30,8 @@ public class StartActivity extends Activity {
 
     private void assignListeners() {
         studentButton1.setOnClickListener((View e) ->{
-            //Intent intent = new Intent(this, _);
-            //startActivity(intent);
+            Intent intent = new Intent(this, MccMainActivity.class);
+            startActivity(intent);
         });
 
         studentButton2.setOnClickListener((View e) ->{
@@ -43,8 +45,8 @@ public class StartActivity extends Activity {
         });
 
         studentButton4.setOnClickListener((View e) ->{
-            //Intent intent = new Intent(this, _);
-            //startActivity(intent);
+            Intent intent = new Intent(this, AC_OCTranspActivity.class);
+            startActivity(intent);
         });
     }
 }
