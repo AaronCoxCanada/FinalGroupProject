@@ -10,13 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StartActivity">
-            <intent-filter>
+      <activity android:name=".StartActivity">
+                  <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+      </activity>
+        <activity android:name=".patient_intake.PatientIntakeStart" />
+        <activity android:name=".patient_intake.PatientIntakeForm" />
+        <activity android:name=".patient_intake.PatientIntakeFormDoctor" />
+        <activity android:name=".patient_intake.PatientIntakeFormDentist" />
+        <activity android:name=".patient_intake.PatientIntakeFormOptometrist" />
+        <activity android:name=".patient_intake.PatientIntakeImport" />
+        <activity android:name=".patient_intake.PatientIntakePatients"></activity>
 
         <!-- Multiple Choice Creator Activities - Prefix: Mcc -->
         <activity android:name=".MccMainActivity" />
@@ -27,8 +34,6 @@
         <activity
             android:name=".octranspo.AC_OCTranspActivity"
             android:theme="@style/Theme.AppCompat" />
-
-
     </application>
 
 </manifest>
