@@ -8,4 +8,7 @@
     <string name="student_04_name">Student 04</string>
 
 
+    <string name="ocb_search_button">Search</string>
+    <string name="ocb_search_hint">Bus Stop Number</string>
+    <string name="ocb_search_history_text">Search History</string>
 </resources>

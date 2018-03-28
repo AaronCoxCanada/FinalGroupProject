@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.algonquinlive.cst335.finalgroupproject.octranspo.OCTranspoActivity;
+import com.algonquinlive.cst335.finalgroupproject.octranspo.AC_OCTranspActivity;
 
 public class StartActivity extends Activity {
 
@@ -45,7 +45,7 @@ public class StartActivity extends Activity {
         });
 
         studentButton4.setOnClickListener((View e) ->{
-            Intent intent = new Intent(this, OCTranspoActivity.class);
+            Intent intent = new Intent(this, AC_OCTranspActivity.class);
             startActivity(intent);
         });
     }

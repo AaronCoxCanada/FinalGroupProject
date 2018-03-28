@@ -18,9 +18,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".octranspo.OCTranspoActivity"
-            android:theme="@style/OcBusTheme"
-            />
+            android:name=".octranspo.AC_OCTranspActivity"
+            android:theme="@style/Theme.AppCompat" />
     </application>
 
 </manifest>
