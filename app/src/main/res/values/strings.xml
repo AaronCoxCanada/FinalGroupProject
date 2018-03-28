@@ -7,7 +7,46 @@
     <string name="student_03_name">Student 03</string>
     <string name="student_04_name">Student 04</string>
 
+    <!-- PATIENT INTAKE -->
 
+    <!-- Start -->
+    <string name='patient_start_label'>Patient Intake Menu</string>
+    <string name='patient_start_form'>Fill Form</string>
+    <string name='patient_start_import'>Import Patients</string>
+    <string name='patient_start_patients'>View Patients</string>
+    <string name='patient_start_stats'>Patient Statistics</string>
+
+    <!-- Form -->
+    <string name='patient_form_label'>Patient Intake Form</string>
+    <string name='patient_name_label'>Name</string>
+    <string name='patient_address_label'>Address</string>
+    <string name='patient_birthday_label'>Birthday</string>
+    <string name='patient_phone_label'>Phone Number</string>
+    <string name='patient_card_label'>Health Card #</string>
+    <string name='patient_description_label'>Description</string>
+    <string name='patient_doctor_label'>Doctor</string>
+    <string name='patient_dentist_label'>Dentist</string>
+    <string name='patient_optometrist_label'>Optometrist</string>
+    <string name='patient_form_next'>Next</string>
+    <string name='patient_form_back'>Back</string>
+    <string name='patient_form_submit'>Submit</string>
+    <!-- Doctor -->
+    <string name='patient_surgeries_label'>Previous Surgeries</string>
+    <string name='patient_allergies_label'>Allergies</string>
+    <!-- Dentist -->
+    <string name='patient_braces_label'>Braces?</string>
+    <string name='patient_benefits_label'>Benefits</string>
+    <!-- Optomoterist -->
+    <string name='patient_glassesdate_label'>Date Glasses Bought</string>
+    <string name='patient_store_label'>Store</string>
+
+    <!-- Import -->
+    <string name='patient_import_label'>Import Patients From XML</string>
+    <string name='patient_xml_label'>XML Link</string>
+    <string name='patient_import_download'>Download</string>
+
+    <!-- Patients -->
+    <string name='patient_patients_label'>List of Patients</string>
 
 
 </resources>
