@@ -1,10 +1,8 @@
-package com.algonquinlive.cst335.finalgroupproject;
+package com.algonquinlive.cst335.finalgroupproject.quiz;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,6 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.algonquinlive.cst335.finalgroupproject.R;
+
 import java.util.ArrayList;
 
 public class MccMainActivity extends Activity {
@@ -31,6 +31,7 @@ public class MccMainActivity extends Activity {
     ArrayList<String> questions;
     QuestionAdapter questionAdapter;
     ListView listView;
+    TextView noQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,8 @@ public class MccMainActivity extends Activity {
         Button btnHelp = findViewById(R.id.mcc_main_btn_help);
         questionAdapter = new QuestionAdapter( this );
         listView.setAdapter (questionAdapter);
+
+        noQuestion = findViewById(R.id.mcc_main_no_question);
 
         MccDatabaseHelper dbHelper = new MccDatabaseHelper(this);
         db = dbHelper.getWritableDatabase();
@@ -93,23 +96,95 @@ public class MccMainActivity extends Activity {
 
             for(int i = 0; i < numResults; i++) {
                 int messageColumnIndex = results.getColumnIndex(MccDatabaseHelper.KEY_QUESTION);
-                questions.add(results.getString(messageColumnIndex));
+                questions.add((i + 1) + ". "+ results.getString(messageColumnIndex));
                 results.moveToNext();
             }
+
+            noQuestion.setVisibility(View.GONE);
+        }
+        else {
+            noQuestion.setVisibility(View.VISIBLE);
         }
 
         questionAdapter.notifyDataSetChanged();
     }
 
+    public void displayStatistic() {
+        Cursor cursor = db.query(false, MccDatabaseHelper.TABLE_NAME,
+                new String[] { MccDatabaseHelper.KEY_ID, MccDatabaseHelper.KEY_QUESTION},
+                null, null,
+                null, null, null, null);
+
+        String statistic;
+        String longestQuestion = null;
+        String shortestQuestion = null;
+        int totalLength = 0;
+        int numResults = cursor.getCount();
+        if (numResults > 0) {
+            cursor.moveToFirst();
+
+            for(int i = 0; i < numResults; i++) {
+
+                int messageColumnIndex = cursor.getColumnIndex(MccDatabaseHelper.KEY_QUESTION);
+                String question = cursor.getString(messageColumnIndex);
+                totalLength += question.length();
+                if (longestQuestion == null) {
+                    longestQuestion = question;
+                }
+                else {
+                    if (question.length() > longestQuestion.length()) {
+                        longestQuestion = question;
+                    }
+                }
+
+                if (shortestQuestion == null) {
+                    shortestQuestion = question;
+                }
+                else {
+                    if (question.length() < shortestQuestion.length()) {
+                        shortestQuestion = question;
+                    }
+                }
+
+                cursor.moveToNext();
+            }
+
+            statistic = "There are total " + numResults + " questions\n " +
+                    "Longest question length: " + longestQuestion.length() + " characters\n" +
+                    "Shortest question length: " + shortestQuestion.length() + " characters\n" +
+                    "Average length: " + totalLength / numResults + " characters\n";
+        }
+        else {
+            statistic = "There is no question";
+        }
+
+        Toast toast = Toast.makeText(this , statistic, Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
     @Override
     public void onActivityResult( int requestCode, int resultCode, Intent data)
     {
-        if(requestCode == 50 && resultCode != Activity.RESULT_CANCELED)
-        {
-            reloadQuestions();
-            String message = resultCode == Activity.RESULT_OK ? "Created a new question" : "Deleted a question";
-            Toast toast = Toast.makeText(this , message, Toast.LENGTH_SHORT);
-            toast.show();
+        reloadQuestions();
+        if(requestCode == 50) {
+            String message;
+            if (resultCode == Activity.RESULT_OK) {
+                message = "Created a new question!";
+            }
+            else if (resultCode == 15) {
+                message = "Question updated successfully!";
+            }
+            else if (resultCode == 5) {
+                message = "Deleted a question!";
+            }
+            else {
+                message = null;
+            }
+
+            if (message != null) {
+                Toast toast = Toast.makeText(this , message, Toast.LENGTH_SHORT);
+                toast.show();
+            }
         }
     }
 
