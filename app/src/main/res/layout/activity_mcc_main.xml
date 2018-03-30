@@ -8,6 +8,9 @@
     tools:context="com.algonquinlive.cst335.finalgroupproject.quiz.MccMainActivity"
     android:padding="15dp">
 
+    <Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></Toolbar>
 
     <TextView
         android:id="@+id/mcc_main_header"
@@ -31,7 +34,7 @@
         android:layout_marginBottom="10dp"/>
     <ListView
         android:layout_below="@+id/mcc_main_title"
-        android:layout_above="@id/mcc_main_btn_add"
+        android:layout_above="@id/mcc_progress_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/mcc_list_view"
@@ -43,30 +46,21 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/mcc_main_title"
         android:text="@string/mcc_main_no_question"/>
-    <Button
-        android:text="@string/mcc_main_add_button"
+    <ImageButton
         android:id="@+id/mcc_main_btn_add"
+        android:background="@drawable/mcc_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="5dp"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Help"
-        android:id="@+id/mcc_main_btn_help"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="5dp"/>
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"/>
 
     <ProgressBar
-        android:layout_width="200dp"
+        android:id="@+id/mcc_progress_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:progress="100"/>
+        style="?android:attr/progressBarStyleHorizontal" />
 
 
 </RelativeLayout>

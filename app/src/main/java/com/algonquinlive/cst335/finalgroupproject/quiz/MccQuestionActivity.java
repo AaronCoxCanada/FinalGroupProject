@@ -1,7 +1,9 @@
 package com.algonquinlive.cst335.finalgroupproject.quiz;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -249,10 +251,21 @@ public class MccQuestionActivity extends Activity {
         btnCancel.setOnClickListener(e -> finish());
 
         btnDelete.setOnClickListener(e -> {
-            db.delete(MccDatabaseHelper.TABLE_NAME, MccDatabaseHelper.KEY_ID + "=?",
-                    new String[] {String.valueOf(Id)});
-            setResult(5, new Intent());
-            finish();
+            AlertDialog.Builder builder = new AlertDialog.Builder(MccQuestionActivity.this);
+            builder.setTitle("Are you sure you want to delete this question?");
+            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    db.delete(MccDatabaseHelper.TABLE_NAME, MccDatabaseHelper.KEY_ID + "=?",
+                            new String[] {String.valueOf(Id)});
+                    setResult(5, new Intent());
+                    finish();
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) { }
+            });
+
+            builder.create().show();
         });
     }
 
