@@ -26,10 +26,10 @@
         <activity android:name=".patient_intake.PatientIntakePatients"></activity>
 
         <!-- Multiple Choice Creator Activities - Prefix: Mcc -->
-        <activity android:name=".MccMainActivity" />
+        <activity android:name=".quiz.MccMainActivity" />
         <!-- End Multiple Choice Creator Strings -->
 
-        <activity android:name=".MccQuestionActivity"/>
+        <activity android:name=".quiz.MccQuestionActivity"/>
 
         <activity
             android:name=".octranspo.AC_OCTranspActivity"
