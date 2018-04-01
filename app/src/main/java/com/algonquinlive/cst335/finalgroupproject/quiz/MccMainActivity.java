@@ -2,6 +2,7 @@ package com.algonquinlive.cst335.finalgroupproject.quiz;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,6 +27,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,7 +55,7 @@ public class MccMainActivity extends Activity {
     QuestionAdapter questionAdapter;
     ListView listView;
     TextView noQuestion;
-
+    ProgressBar progressBar;
     String url;
 
     @Override
@@ -65,7 +67,8 @@ public class MccMainActivity extends Activity {
         listView = findViewById(R.id.mcc_list_view);
         questionAdapter = new QuestionAdapter( this );
         listView.setAdapter (questionAdapter);
-
+        progressBar = findViewById(R.id.mcc_progress_bar);
+        progressBar.setVisibility(View.GONE);
         noQuestion = findViewById(R.id.mcc_main_no_question);
 
         MccDatabaseHelper dbHelper = new MccDatabaseHelper(this);
@@ -127,6 +130,7 @@ public class MccMainActivity extends Activity {
         builder.setMessage("Download Questions from URL")
                 .setPositiveButton("Download", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        progressBar.setVisibility(View.VISIBLE);
                         url = txtUrl.getText().toString();
                         new DownloadQuestions().execute();
                     }
@@ -228,6 +232,9 @@ public class MccMainActivity extends Activity {
         return statistic;
     }
 
+    public void showToast(String message) {
+        Toast.makeText(this , message, Toast.LENGTH_SHORT).show();
+    }
     @Override
     public void onActivityResult( int requestCode, int resultCode, Intent data)
     {
@@ -248,8 +255,7 @@ public class MccMainActivity extends Activity {
             }
 
             if (message != null) {
-                Toast toast = Toast.makeText(this , message, Toast.LENGTH_SHORT);
-                toast.show();
+                showToast(message);
             }
         }
     }
@@ -300,7 +306,8 @@ public class MccMainActivity extends Activity {
         @Override
         protected String doInBackground(String... strings) {
             try {
-                URL url = new URL("https://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=d99666875e0e51521f0040a3d97d0f6a&mode=xml&units=metric");
+
+                URL url = new URL("https://www.torunski.ca/CST2335/QuizInstance.xml");
                 HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
                 conn.setReadTimeout(10000);
                 conn.setConnectTimeout(15000);
@@ -308,70 +315,99 @@ public class MccMainActivity extends Activity {
                 conn.setDoInput(true);
                 conn.connect();
                 InputStream in = conn.getInputStream();
-//                try {
-//                    XmlPullParser parser = Xml.newPullParser();
-//                    parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-//                    parser.setInput(in, null);
-//
-//                    int type;
-//                    //While you're not at the end of the document:
-//                    while((type = parser.getEventType()) != XmlPullParser.END_DOCUMENT)
-//                    {
-//                        //Are you currently at a Start Tag?
-//                        if(parser.getEventType() == XmlPullParser.START_TAG)
-//                        {
-//                            if(parser.getName().equals("temperature") )
-//                            {
-//                                currentTemp = parser.getAttributeValue(null, "value");
-//                                publishProgress(25);
-//                                minTemp = parser.getAttributeValue(null, "min");
-//                                publishProgress(50);
-//                                maxTemp = parser.getAttributeValue(null, "max");
-//                                publishProgress(75);
-//                            }
-//                            else if (parser.getName().equals("weather")) {
-//                                String iconName = parser.getAttributeValue(null, "icon");
-//                                String fileName = iconName + ".png";
-//
-//                                Log.i(ACTIVITY_NAME,"Looking for file: " + fileName);
-//                                if (fileExistance(fileName)) {
-//                                    FileInputStream fis = null;
-//                                    try {
-//                                        fis = openFileInput(fileName);
-//
-//                                    }
-//                                    catch (FileNotFoundException e) {
-//                                        e.printStackTrace();
-//                                    }
-//                                    Log.i(ACTIVITY_NAME,"Found the file locally");
-//                                    picture = BitmapFactory.decodeStream(fis);
-//                                }
-//                                else {
-//                                    String iconUrl = "https://openweathermap.org/img/w/" + fileName;
-//                                    picture = getImage(new URL(iconUrl));
-//
-//                                    FileOutputStream outputStream = openFileOutput( fileName, Context.MODE_PRIVATE);
-//                                    picture.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
-//                                    Log.i(ACTIVITY_NAME,"Downloaded the file from the Internet");
-//                                    outputStream.flush();
-//                                    outputStream.close();
-//                                }
-//                                publishProgress(100);
-//                            }
-//                            else if (parser.getName().equals("wind")) {
-//                                parser.nextTag();
-//                                if(parser.getName().equals("speed") )
-//                                {
-//                                    windSpeed = parser.getAttributeValue(null, "value");
-//                                }
-//                            }
-//                        }
-//                        // Go to the next XML event
-//                        parser.next();
-//                    }
-//                } finally {
-//                    in.close();
-//                }
+                try {
+                    XmlPullParser parser = Xml.newPullParser();
+                    parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+                    parser.setInput(in, null);
+
+                    int type;
+                    boolean isAnswer = false;
+                    ArrayList<String> answers = new ArrayList<>();
+                    String multipleChoiceQuestion = "";
+                    String multipleChoiceAnswer = "";
+                    //While you're not at the end of the document:
+                    while((type = parser.getEventType()) != XmlPullParser.END_DOCUMENT)
+                    {
+                        //Are you currently at a Start Tag?
+                        if(parser.getEventType() == XmlPullParser.START_TAG)
+                        {
+                            if(parser.getName().equals("MultipleChoiceQuestion") )
+                            {
+                                multipleChoiceQuestion  = parser.getAttributeValue(null, "question");
+                                multipleChoiceAnswer = parser.getAttributeValue(null, "correct");
+                            }
+                            else if (parser.getName().equals("NumericQuestion")) {
+                                String accuracy = parser.getAttributeValue(null, "accuracy");
+                                String question = parser.getAttributeValue(null, "question");
+                                String answer = parser.getAttributeValue(null, "answer");
+
+                                ContentValues newData = new ContentValues();
+                                newData.put(MccDatabaseHelper.KEY_QUESTION, question);
+                                newData.put(MccDatabaseHelper.KEY_TYPE, "numeric");
+                                newData.put(MccDatabaseHelper.KEY_NUMERIC_ANSWER, answer);
+                                newData.put(MccDatabaseHelper.KEY_NUMERIC_DELTA, accuracy);
+                                db.insert(MccDatabaseHelper.TABLE_NAME, null, newData);
+                                publishProgress(25);
+                            }
+                            else if (parser.getName().equals("TrueFalseQuestion")) {
+                                String question = parser.getAttributeValue(null, "question");
+                                String answer = parser.getAttributeValue(null, "answer");
+
+                                ContentValues newData = new ContentValues();
+                                newData.put(MccDatabaseHelper.KEY_TYPE, "boolean");
+                                newData.put(MccDatabaseHelper.KEY_QUESTION, question);
+                                newData.put(MccDatabaseHelper.KEY_BOOLEAN_ANSWER, answer);
+                                db.insert(MccDatabaseHelper.TABLE_NAME, null, newData);
+                                publishProgress(50);
+                            }
+                            else if (parser.getName().equals("Answer")) {
+                                isAnswer = true;
+                            }
+                        }
+                        else if(parser.getEventType() == XmlPullParser.TEXT) {
+                            String text = parser.getText();
+                            if (isAnswer && text != null && !text.trim().isEmpty()) {
+                                answers.add(text);
+                            }
+                        }
+                        else if(parser.getEventType() == XmlPullParser.END_TAG) {
+                            if (parser.getName().equals("Answer")) {
+                                isAnswer = false;
+                            }
+                        }
+                        // Go to the next XML event
+                        parser.next();
+                    }
+                    publishProgress(75);
+
+                    ContentValues newData = new ContentValues();
+                    newData.put(MccDatabaseHelper.KEY_TYPE, "multiple");
+                    newData.put(MccDatabaseHelper.KEY_QUESTION, multipleChoiceQuestion);
+                    newData.put(MccDatabaseHelper.KEY_MULTIPLE_OPTION_A, answers.get(0));
+                    newData.put(MccDatabaseHelper.KEY_MULTIPLE_OPTION_B, answers.get(1));
+                    newData.put(MccDatabaseHelper.KEY_MULTIPLE_OPTION_C, answers.get(2));
+                    newData.put(MccDatabaseHelper.KEY_MULTIPLE_OPTION_D, answers.get(3));
+
+                    String answer;
+                    if (answers.get(0).equals(multipleChoiceAnswer)) {
+                        answer = "A";
+                    }
+                    else if (answers.get(1).equals(multipleChoiceAnswer)) {
+                        answer = "B";
+                    }
+                    else if (answers.get(2).equals(multipleChoiceAnswer)) {
+                        answer = "C";
+                    }
+                    else {
+                        answer = "D";
+                    }
+                    newData.put(MccDatabaseHelper.KEY_MULTIPLE_ANSWER, answer);
+                    db.insert(MccDatabaseHelper.TABLE_NAME, null, newData);
+                    publishProgress(100);
+                } finally {
+
+                    in.close();
+                }
             }
             catch (Exception ex) {
                 ex.printStackTrace();
@@ -383,17 +419,14 @@ public class MccMainActivity extends Activity {
 
         @Override
         protected void onPostExecute(String a) {
-//            progressBar.setVisibility(View.INVISIBLE);
-//            imageView.setImageBitmap(picture);
-//            current_temp.setText(currentTemp);
-//            min_temp.setText(minTemp);
-//            max_temp.setText(maxTemp);
-//            wind_speed.setText(windSpeed);
+            showToast("Finished download!");
+            reloadQuestions();
+            progressBar.setVisibility(View.GONE);
         }
 
         @Override
         protected void onProgressUpdate(Integer... values) {
-//            progressBar.setProgress(values[0]);
+            progressBar.setProgress(values[0]);
         }
 
 
