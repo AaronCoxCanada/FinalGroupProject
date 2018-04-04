@@ -13,6 +13,8 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Xml;
 import android.view.LayoutInflater;
@@ -45,7 +47,7 @@ import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class MccMainActivity extends Activity {
+public class MccMainActivity extends AppCompatActivity {
 
     final String INFO = "Multiple Choice Quiz Creator\n\nAuthor name: Truong Giang Vu\n" +
             "Version: 1.0\n\nClick ADD QUESTION button to add a new question\n";
@@ -419,7 +421,8 @@ public class MccMainActivity extends Activity {
 
         @Override
         protected void onPostExecute(String a) {
-            showToast("Finished download!");
+            Snackbar.make(findViewById(R.id.mcc_main_no_question), "Download finished", Snackbar.LENGTH_SHORT).show();
+//            showToast("Finished download!");
             reloadQuestions();
             progressBar.setVisibility(View.GONE);
         }
