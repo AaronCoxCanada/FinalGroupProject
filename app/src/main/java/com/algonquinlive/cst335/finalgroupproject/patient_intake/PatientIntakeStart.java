@@ -1,16 +1,23 @@
 package com.algonquinlive.cst335.finalgroupproject.patient_intake;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.algonquinlive.cst335.finalgroupproject.R;
 
-public class PatientIntakeStart extends Activity {
+public class PatientIntakeStart extends AppCompatActivity {
 
     //activity name
     protected static final String ACTIVITY_NAME = "PatientIntakeStart";
@@ -46,7 +53,7 @@ public class PatientIntakeStart extends Activity {
             }
         });
 
-        Button patients = findViewById(R.id.PatientIntakeStart_patients);
+        patients = findViewById(R.id.PatientIntakeStart_patients);
         patients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,5 +62,45 @@ public class PatientIntakeStart extends Activity {
                 Log.i("PatientIntakeStart", "patient list viewed");
             }
         });
+
+        stats = findViewById(R.id.PatientIntakeStart_stats);
+        stats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent statsIntent = new Intent(PatientIntakeStart.this, PatientIntakeStatistics.class);
+                startActivity(statsIntent);
+                Log.i("PatientIntakeStart", "patient statistic viewed");
+            }
+        });
+    }
+
+    public boolean onCreateOptionsMenu (Menu m){
+        getMenuInflater().inflate(R.menu.patient_intake_menu, m );
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem mi){
+
+        switch(mi.getItemId()){
+            case R.id.zaid_about:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("About");
+                builder.setMessage("Author: Zaid Sweidan" +
+                        "\nVer: 2.0 " +
+                        "\n\nFill Form: add a patient" +
+                        "\nImport Patients: import patients \tfrom an XML file" +
+                        "\nView Patients: view, edit and delete \tcurrent patients" +
+                        "\nPatient Statistics: view statistics \tabout current patients" +
+                        "\n");
+                builder.setNeutralButton("Okay", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+                // Create the AlertDialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                break;
+        }
+        return true;
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -36,10 +37,11 @@
 
             <EditText
                 android:id="@+id/patient_xml"
-                android:textSize="15dp"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:text="http://torunski.ca/CST2335/PatientList.xml"
+                android:textSize="15dp" />
 
         </GridLayout>
 
@@ -61,6 +63,4 @@
     </LinearLayout>
 
 
-
-
-</android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>
