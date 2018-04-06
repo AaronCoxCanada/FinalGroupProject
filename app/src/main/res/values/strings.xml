@@ -58,6 +58,25 @@
 
     <!-- Multiple Choice Creator Strings - Prefix: mcc -->
     <string name="mcc_main_label">Multiple Choice Quiz Creator</string>
+    <string name="mcc_main_title">Question List</string>
+    <string name="mcc_main_no_question">There is no question.</string>
+    <string name="mcc_main_add_button">Add Question</string>
+
+    <string name="mcc_question_add_edit">Question Add/Edit</string>
+    <string name="mcc_question_question">Question:</string>
+    <string name="mcc_question_type">Question type:</string>
+    <string name="mcc_question_multiple">Multiple Choices</string>
+    <string name="mcc_question_numeric">Numeric Answer</string>
+    <string name="mcc_question_delta">Delta:</string>
+    <string name="mcc_question_boolean">True/False</string>
+    <string name="mcc_question_options">Options:</string>
+    <string name="mcc_question_correct_answer">Correct answer:</string>
+    <string name="mcc_question_true">True</string>
+    <string name="mcc_question_false">False</string>
+    <string name="mcc_question_save">Save</string>
+    <string name="mcc_question_delete">Delete</string>
+    <string name="mcc_question_cancel">Cancel</string>
+
     <!-- End Multiple Choice Creator Strings -->
 
     <string name="ocb_search_button">Search</string>

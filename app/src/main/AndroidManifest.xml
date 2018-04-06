@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
-        <activity android:name=".StartActivity">
+      <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,14 +25,15 @@
         <activity android:name=".patient_intake.PatientIntakePatients" />
 
         <!-- Multiple Choice Creator Activities - Prefix: Mcc -->
-        <activity android:name=".MccMainActivity" />
+        <activity android:name=".quiz.MccMainActivity" />
         <!-- End Multiple Choice Creator Strings -->
 
-        <activity android:name=".MccQuestionActivity" />
+        <activity android:name=".quiz.MccQuestionActivity"/>
         <activity
             android:name=".octranspo.AC_OCTranspActivity"
             android:theme="@style/Theme.AppCompat" />
         <activity android:name=".patient_intake.PatientIntakeStatistics"></activity>
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

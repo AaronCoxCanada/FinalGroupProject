@@ -1,128 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.algonquinlive.cst335.finalgroupproject.MccQuestionActivity">
-    <TextView
-        android:text="Question Add/Edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <EditText
-        android:id="@+id/mcc_question_txt_question"
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp"
+        tools:context="com.algonquinlive.cst335.finalgroupproject.quiz.MccQuestionActivity">
         <TextView
+            android:text="@string/mcc_question_add_edit"
+            android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Question type:"/>
-        <RadioGroup
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:text="@string/mcc_question_question"
+            android:textSize="15dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <RadioButton android:id="@+id/mcc_question_rad_multiple"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Multiple Choices"
-                android:textSize="12dp"
-                android:onClick="onRadioButtonClicked"/>
-            <RadioButton android:id="@+id/mcc_question_rad_numeric"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Numeric Answer"
-                android:textSize="12dp"
-                android:onClick="onRadioButtonClicked"/>
-            <RadioButton android:id="@+id/mcc_question_rad_boolean"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="True/False"
-                android:textSize="12dp"
-                android:onClick="onRadioButtonClicked"/>
-        </RadioGroup>
-    </LinearLayout>
-
-    <LinearLayout android:orientation="vertical"
-        android:id="@+id/mcc_question_container_multiple"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/mcc_question_container_numeric"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
+            android:id="@+id/mcc_question_txt_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/mcc_question_container_boolean"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <RadioGroup
+        <LinearLayout
+            android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <RadioButton android:id="@+id/mcc_question_rad_true"
+            android:orientation="vertical">
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:text="True"
-                android:onClick="onRadioButtonClicked"/>
-            <RadioButton android:id="@+id/mcc_question_rad_false"
+                android:textSize="15dp"
+                android:text="@string/mcc_question_type"/>
+            <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="False"
-                android:onClick="onRadioButtonClicked"/>
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/mcc_question_rad_multiple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mcc_question_multiple"
+                    android:textSize="12dp"
+                    android:onClick="onRadioButtonClicked"/>
+                <RadioButton
+                    android:id="@+id/mcc_question_rad_numeric"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mcc_question_numeric"
+                    android:textSize="12dp"
+                    android:onClick="onRadioButtonClicked"/>
+                <RadioButton
+                    android:id="@+id/mcc_question_rad_boolean"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mcc_question_boolean"
+                    android:textSize="12dp"
+                    android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
+        </LinearLayout>
 
-        </RadioGroup>
+        <LinearLayout android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:id="@+id/mcc_question_container_multiple"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="@string/mcc_question_options"/>
+            <EditText
+                android:hint="A"
+                android:id="@+id/txt_option_A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:hint="B"
+                android:id="@+id/txt_option_B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:hint="C"
+                android:id="@+id/txt_option_C"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:hint="D"
+                android:id="@+id/txt_option_D"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button android:id="@+id/mcc_question_btn_save"
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mcc_question_correct_answer"/>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton android:id="@+id/mcc_question_rad_A"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:textSize="12dp"
+                    android:checked="true"
+                    />
+                <RadioButton android:id="@+id/mcc_question_rad_B"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:textSize="12dp"
+                    />
+                <RadioButton android:id="@+id/mcc_question_rad_C"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C"
+                    android:textSize="12dp"
+                    />
+                <RadioButton android:id="@+id/mcc_question_rad_D"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D"
+                    android:textSize="12dp"
+                    />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:id="@+id/mcc_question_container_numeric"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="@string/mcc_question_correct_answer"/>
+            <EditText
+                android:id="@+id/mcc_question_txt_numeric_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="@string/mcc_question_delta"/>
+            <EditText
+                android:id="@+id/mcc_question_txt_delta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mcc_question_container_boolean"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save"
-            />
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="@string/mcc_question_correct_answer"/>
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/mcc_question_rad_true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/mcc_question_true"/>
+                <RadioButton
+                    android:id="@+id/mcc_question_rad_false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mcc_question_false"/>
 
-        <Button
-            android:id="@+id/mcc_question_btn_delete"
-            android:text="Delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            </RadioGroup>
+        </LinearLayout>
 
-        <Button android:id="@+id/mcc_question_btn_cancel"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancel"
-            />
+            android:layout_marginTop="20dp">
+            <Button android:id="@+id/mcc_question_btn_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mcc_question_save"
+                android:layout_marginRight="15dp"/>
+
+            <Button
+                android:id="@+id/mcc_question_btn_delete"
+                android:text="@string/mcc_question_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"/>
+
+            <Button android:id="@+id/mcc_question_btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mcc_question_cancel"/>
+        </LinearLayout>
     </LinearLayout>
 
-
-</LinearLayout>
+</ScrollView>

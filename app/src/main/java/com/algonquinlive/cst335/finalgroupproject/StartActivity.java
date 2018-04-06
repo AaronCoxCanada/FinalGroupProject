@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.algonquinlive.cst335.finalgroupproject.octranspo.AC_OCTranspActivity;
 import com.algonquinlive.cst335.finalgroupproject.patient_intake.PatientIntakeStart;
+import com.algonquinlive.cst335.finalgroupproject.quiz.MccMainActivity;
 
 public class StartActivity extends Activity {
 

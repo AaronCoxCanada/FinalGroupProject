@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/mcc_download"
+        android:title="Download"
+        android:icon="@drawable/mcc_download"
+        android:orderInCategory="101"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/mcc_summary"
+        android:title="Statistic"
+        android:icon="@drawable/mcc_summary"
+        android:orderInCategory="102"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/mcc_info"
+        android:title="Help"
+        android:icon="@drawable/mcc_info"
+        android:orderInCategory="103"
+        app:showAsAction="always" />
+
+</menu>
