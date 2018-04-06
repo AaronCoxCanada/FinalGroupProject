@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.algonquinlive.cst335.finalgroupproject.octranspo.AC_OCTranspActivity;
+import com.algonquinlive.cst335.finalgroupproject.patient_intake.PatientIntakeStart;
 
 public class StartActivity extends Activity {
 
@@ -40,8 +41,8 @@ public class StartActivity extends Activity {
         });
 
         studentButton3.setOnClickListener((View e) ->{
-            //Intent intent = new Intent(this, _);
-            //startActivity(intent);
+            Intent intent = new Intent(this, PatientIntakeStart.class);
+            startActivity(intent);
         });
 
         studentButton4.setOnClickListener((View e) ->{
