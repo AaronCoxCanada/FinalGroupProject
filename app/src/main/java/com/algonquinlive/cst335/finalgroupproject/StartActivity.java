@@ -23,7 +23,7 @@ public class StartActivity extends Activity {
         setContentView(R.layout.activity_start);
 
         studentButton1 = findViewById(R.id.student_button01);
-        studentButton2 = findViewById(R.id.student_button02);
+        //studentButton2 = findViewById(R.id.student_button02);
         studentButton3 = findViewById(R.id.student_button03);
         studentButton4 = findViewById(R.id.student_button04);
 
@@ -36,10 +36,10 @@ public class StartActivity extends Activity {
             startActivity(intent);
         });
 
-        studentButton2.setOnClickListener((View e) ->{
+/*        studentButton2.setOnClickListener((View e) ->{
             //Intent intent = new Intent(this, _);
             //startActivity(intent);
-        });
+        });*/
 
         studentButton3.setOnClickListener((View e) ->{
             Intent intent = new Intent(this, PatientIntakeStart.class);

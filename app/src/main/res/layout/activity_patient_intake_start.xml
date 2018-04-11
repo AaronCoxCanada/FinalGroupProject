@@ -9,8 +9,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary" />
+        android:layout_height="?attr/actionBarSize" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,41 +20,41 @@
             android:id="@+id/PatientIntakeStart_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:text="@string/patient_start_label"
             android:textAlignment="center"
-            android:textSize="20dp"
-            android:layout_margin="20dp"/>
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/PatientIntakeStart_form"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/PatientIntakeStart_label"
             android:layout_centerHorizontal="true"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
             android:text="@string/patient_start_form" />
 
         <Button
             android:id="@+id/PatientIntakeStart_import"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/PatientIntakeStart_form"
             android:layout_centerHorizontal="true"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
             android:text="@string/patient_start_import" />
 
         <Button
-            android:id="@+id/PatientIntakeStart_patients"
+            android:id="@+id/PatientIntakeStart_manage"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/PatientIntakeStart_import"
             android:layout_centerHorizontal="true"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="@string/patient_start_patients" />
+            android:text="@string/patient_start_manage" />
 
         <Button
             android:id="@+id/PatientIntakeStart_stats"
-            android:layout_below="@id/PatientIntakeStart_patients"
-            android:layout_centerHorizontal="true"
-            android:layout_width="150dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_below="@id/PatientIntakeStart_manage"
+            android:layout_centerHorizontal="true"
             android:text="@string/patient_start_stats" />
 
 

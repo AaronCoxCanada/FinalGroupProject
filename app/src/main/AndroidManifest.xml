@@ -22,7 +22,7 @@
         <activity android:name=".patient_intake.PatientIntakeStart" />
         <activity android:name=".patient_intake.PatientIntakeForm" />
         <activity android:name=".patient_intake.PatientIntakeImport" />
-        <activity android:name=".patient_intake.PatientIntakePatients" />
+        <activity android:name=".patient_intake.PatientIntakeManage" />
 
         <!-- Multiple Choice Creator Activities - Prefix: Mcc -->
         <activity android:name=".quiz.MccMainActivity" />

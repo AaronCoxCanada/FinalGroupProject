@@ -14,50 +14,32 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <GridLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/opening_grid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:columnCount="2"
-        android:rowCount="2">
+        android:layout_centerVertical="true">
 
         <Button
             android:id="@+id/student_button01"
-            android:layout_column="0"
-            android:layout_marginBottom="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_row="0"
-            android:height="80dp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
             android:text="@string/student_01_name" />
 
         <Button
-            android:id="@+id/student_button02"
-            android:layout_column="1"
-            android:layout_marginStart="20dp"
-            android:layout_row="0"
-            android:height="80dp"
-            android:text="@string/student_02_name" />
-
-        <Button
             android:id="@+id/student_button03"
-            android:layout_column="0"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_row="1"
-            android:height="80dp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
             android:text="@string/student_03_name" />
 
         <Button
             android:id="@+id/student_button04"
-            android:layout_column="1"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_row="1"
-            android:height="80dp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
             android:text="@string/student_04_name" />
-    </GridLayout>
+    </LinearLayout>
 
 
 </RelativeLayout>

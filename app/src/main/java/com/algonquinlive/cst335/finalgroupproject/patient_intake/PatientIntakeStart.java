@@ -1,19 +1,16 @@
 package com.algonquinlive.cst335.finalgroupproject.patient_intake;
 
-import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.algonquinlive.cst335.finalgroupproject.R;
 
@@ -53,11 +50,11 @@ public class PatientIntakeStart extends AppCompatActivity {
             }
         });
 
-        patients = findViewById(R.id.PatientIntakeStart_patients);
+        patients = findViewById(R.id.PatientIntakeStart_manage);
         patients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent formIntent = new Intent(PatientIntakeStart.this, PatientIntakePatients.class);
+                Intent formIntent = new Intent(PatientIntakeStart.this, PatientIntakeManage.class);
                 startActivity(formIntent);
                 Log.i("PatientIntakeStart", "patient list viewed");
             }
@@ -83,16 +80,11 @@ public class PatientIntakeStart extends AppCompatActivity {
 
         switch(mi.getItemId()){
             case R.id.zaid_about:
+
+                Dialog about = new Dialog(this);
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("About");
-                builder.setMessage("Author: Zaid Sweidan" +
-                        "\nVer: 2.0 " +
-                        "\n\nFill Form: add a patient" +
-                        "\nImport Patients: import patients \tfrom an XML file" +
-                        "\nView Patients: view, edit and delete \tcurrent patients" +
-                        "\nPatient Statistics: view statistics \tabout current patients" +
-                        "\n");
-                builder.setNeutralButton("Okay", new DialogInterface.OnClickListener() {
+                builder.setView(R.layout.patient_custom_dialog);
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                     }
                 });

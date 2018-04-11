@@ -97,7 +97,7 @@ public class PatientIntakeImport extends Activity {
                         if (parser.getEventType() == XmlPullParser.START_TAG) {
                             if (parser.getName().equals("Patient")) {
 
-                                patientType = parser.getAttributeValue(null, "type");
+                                patientType = parser.getAttributeValue(null, "type"); cv.put(PatientIntakeDatabaseHelper.TYPE, patientType);
                                 parser.nextTag(); name = parser.nextText(); cv.put(PatientIntakeDatabaseHelper.NAME, name);
                                 parser.nextTag(); address = parser.nextText(); cv.put(PatientIntakeDatabaseHelper.ADDRESS, address);
                                 parser.nextTag(); birthday = parser.nextText(); cv.put(PatientIntakeDatabaseHelper.BDAY, birthday);
